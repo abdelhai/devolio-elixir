@@ -11,22 +11,22 @@ defmodule Devolio.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
   end
 
   scope "/", Devolio do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-
-    # react root
-    scope "/!/" do
-      get "/*path", PageController, :client
-    end
     
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Devolio do
-  #   pipe_through :api
-  # end
+  scope "/api", Devolio do
+    pipe_through :api
+    resources "/users", UserController, except: [:new, :edit]
+    post "/session", SessionController, :create
+    # delete "/session", SessionController, :logout
+  end
 end

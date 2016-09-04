@@ -1,13 +1,10 @@
 defmodule Devolio.SessionController do
   use Devolio.Web, :controller
 
-  alias Devolio.User
-  alias Devolio.Repo
 
+  def create(conn, %{"username" => username, "password" => password}) do
 
-  def create(conn, %{"email" => email, "password" => password}) do
-
-    {valid, user} = Devolio.User.valid_creds?(email, password)
+    {valid, user} = Devolio.User.valid_creds?(username, password)
     IO.inspect {valid, user}
 
     if valid do
@@ -23,7 +20,7 @@ defmodule Devolio.SessionController do
     else
       conn
       |> put_status(401)
-      |> render "error.json", message: "Invalid creds."
+      |> render("error.json", message: "Invalid creds.")
     end
 
   end

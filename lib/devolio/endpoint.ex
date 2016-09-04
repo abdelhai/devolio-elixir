@@ -38,5 +38,6 @@ defmodule Devolio.Endpoint do
     key: "_devolio_key",
     signing_salt: "YG82mUYP"
 
+  plug CORSPlug, origin: ["*"]
   plug Devolio.Router
 end

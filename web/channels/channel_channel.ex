@@ -6,9 +6,9 @@ defmodule Devolio.ChannelChannel do
     {:ok, socket}
   end
 
-  def handle_in("new_msg", %{"body" => body}, socket) do
+  def handle_in("new_msg", %{"body" => body, "user" => user}, socket) do
     IO.puts body
-    broadcast! socket, "new_msg", %{body: body, user: "@mustafa"}
+    broadcast! socket, "new_msg", %{body: body, user: user}
     {:noreply, socket}
   end
 

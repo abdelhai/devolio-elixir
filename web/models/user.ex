@@ -31,10 +31,10 @@ defmodule Devolio.User do
   end
 
   # Checks if password is valid 
-  def valid_creds?(email, password) do
+  def valid_creds?(username, password) do
     alias Devolio.Repo
     alias Devolio.User
-    case Repo.get_by(User, email: email) do
+    case Repo.get_by(User, username: username) do
       nil ->
         {Comeonin.Bcrypt.dummy_checkpw(), nil}
       user ->

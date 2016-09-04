@@ -39,7 +39,8 @@ defmodule Devolio.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 2.5"},
-     {:guardian, path: "~/local_deps/guardian"}]
+     {:guardian, path: "~/local_deps/guardian"},
+     {:cors_plug, "~> 1.1"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

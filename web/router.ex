@@ -27,6 +27,8 @@ defmodule Devolio.Router do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
     post "/session", SessionController, :create
+    resources "/spaces", SpaceController, except: [:new, :edit]
+    resources "/channels", ChannelController, except: [:new, :edit]
     # delete "/session", SessionController, :logout
   end
 end

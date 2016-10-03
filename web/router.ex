@@ -29,6 +29,7 @@ defmodule Devolio.Router do
     post "/session", SessionController, :create
     resources "/spaces", SpaceController, except: [:new, :edit]
     resources "/channels", ChannelController, except: [:new, :edit]
+    get "/messages", MessageController, :index
     # delete "/session", SessionController, :logout
   end
 end

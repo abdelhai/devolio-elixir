@@ -9,6 +9,7 @@ defmodule Devolio.SpaceController do
   end
 
   def create(conn, %{"space" => space_params}) do
+    IO.inspect space_params
     changeset = Space.changeset(%Space{}, space_params)
 
     case Repo.insert(changeset) do
